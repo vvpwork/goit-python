@@ -3,7 +3,7 @@ def enter_kof (name):
 
 
 a = int(input(enter_kof('x')))
-b = int(input( enter_kof('b'))) 
+b = int(input(enter_kof('b'))) 
 c = int(input(enter_kof('c')))
 def calc():
     d = b ** 2 - 4*a*c
