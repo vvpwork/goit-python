@@ -8,9 +8,9 @@ c = float(input(enter_kof('c')))
 
 
 def calc():
-    d = (b ** 2 - 4 * a * c) ** 0.5 
-    x_1 = (-b + d ) / (2 * a)
-    x_2 = (-b - d ) / (2 * a)
+    d = (b ** 2 - 4 * a * c) ** 0.5
+    x_1 = (-b + d) / (2 * a)
+    x_2 = (-b - d) / (2 * a)
     return [x_1, x_2]
 
 
