@@ -8,6 +8,7 @@ print(f"Start in {path}")
 # files - это список имен файлов и папок в path.
 files = os.listdir(path)
 
+
 images = ('JPEG', 'PNG', 'JPG')
 videos = ('AVI', 'MP4', 'MOV')
 documents = ('DOC', 'DOCX', 'TXT')
