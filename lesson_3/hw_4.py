@@ -43,10 +43,11 @@ def addFiles(file, ext, name):
     myFiles[name]['extensions'].add(ext)
 
 
+allExtensions = set({})
 for file in files:
-
     ext = os.path.splitext(file)[1].replace('.', '').upper()
-
+    if ext:
+        allExtensions.add(ext)
     if ext in images:
         addFiles(file, ext, 'images')
         continue
@@ -63,5 +64,12 @@ for file in files:
     addFiles(file, ext, 'others')
 
 for key in myFiles.keys():
+    files = myFiles[key]['files']
+    extensions = myFiles[key]["extensions"]
+    if not len(files):
+        continue
     print(
-        f'{key.capitalize()} files: { myFiles[key]["files"]  } extensions: {myFiles[key]["extensions"]}')
+        f'{key.capitalize()} files: { files } extensions: { extensions if len(extensions) else "" }')
+
+
+print(f'All extensions {allExtensions if len(allExtensions) else ""}')

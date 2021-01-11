@@ -67,8 +67,12 @@ def find_files(path):
             addFiles(file, ext, 'others')
 
     for key in myFiles.keys():
+        files = myFiles[key]['files']
+        extensions = myFiles[key]["extensions"]
+        if not len(files):
+            continue
         print(
-            f'{key.capitalize()} files: { myFiles[key]["files"]  } extensions: {myFiles[key]["extensions"]}')
+            f'{key.capitalize()} files: { files } extensions: { extensions if len(extensions) else "" }')
 
 
 find_files(path)
