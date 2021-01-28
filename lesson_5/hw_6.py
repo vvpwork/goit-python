@@ -12,4 +12,4 @@ def normalize_str(string):
 
 
 if __name__ == '__main__':
-    print(normalize_str("!№%:,.;()+=-\//\ Питон дз 5 "))
+    print(normalize_str("!№%:,.;()+=-\//\ Питон дз 6 "))
