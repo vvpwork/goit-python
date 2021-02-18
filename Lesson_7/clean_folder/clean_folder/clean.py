@@ -5,11 +5,14 @@ import shutil
 import zipfile
 from transliterate import translit
 from pathlib import Path
+
+# tez = os.path.dirname(os.path.dirname(__file__))
+# sys.path.append(tez)
+
 try:
     path = sys.argv[1]
 except IndexError:
     path = sys.path[0]
-
 
 
 print(f"Start in {path}")
@@ -137,10 +140,10 @@ def find_files(path):
             cope_file_in_path(file[0], file[1], file[2], key)
 
 
-def main(folder):
-    rename_dir(folder)
-    find_files(folder)
+def main():
+    rename_dir(path)
+    find_files(path)
 
 
 if __name__ == '__main__':
-    main(path)
+    main()
