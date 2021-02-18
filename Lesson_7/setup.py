@@ -1,14 +1,17 @@
 import setuptools
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
 
 setuptools.setup(
-    name="clean_folders", # Replace with your own username
+    name="clean_folders", 
     version="0.0.1",
     author="VVP",
     author_email="vovvva33@gmail.com",
     description="goit hw 8",
+    entry_points={
+        'console_scripts': [
+            'clean-folder=clean_folders.clean:main'
+        ]
+    },
     url="https://github.com/vvpwork/goit-python/tree/main/lesson_7",
     packages=setuptools.find_packages(),
     classifiers=[

@@ -6,5 +6,4 @@ square_second = hight_second * lenght_second
 
 how_trees = (square_first + square_second) // square_tree
 print(how_trees)
-
- 
+str.__dict__

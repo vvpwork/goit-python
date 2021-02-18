@@ -75,4 +75,5 @@ def find_files(path):
             f'{key.capitalize()} files: { files } extensions: { extensions if len(extensions) else "" }')
 
 
-find_files(path)
+if __name__ == "__main__":
+    find_files(path)

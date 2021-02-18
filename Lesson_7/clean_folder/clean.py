@@ -6,14 +6,20 @@ import zipfile
 from transliterate import translit
 from pathlib import Path
 
-path = sys.argv[1]
+try:
+    path = sys.argv[1]
+except IndexError:
+    raise Exception('You should enter a valid path')
+
+
 print(f"Start in {path}")
 
 
 def normalize_ext(arr):
     newArr = ['.' + i.lower() for i in arr]
     return newArr
-    
+
+
 images = normalize_ext(['JPEG', 'PNG', 'JPG', 'SVG'])
 videos = normalize_ext(['AVI', 'MP4', 'MOV', 'MKV'])
 documents = normalize_ext(['DOC', 'DOCX', 'TXT', 'PDF', 'XLSX', 'PPTX'])
@@ -131,6 +137,10 @@ def find_files(path):
             cope_file_in_path(file[0], file[1], file[2], key)
 
 
-if __name__ == '__main__':
+def main(path):
     rename_dir(path)
     find_files(path)
+
+
+if __name__ == '__main__':
+    main(path)
