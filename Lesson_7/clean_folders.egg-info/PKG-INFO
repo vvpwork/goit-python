@@ -1,0 +1,14 @@
+Metadata-Version: 1.2
+Name: clean-folders
+Version: 0.0.1
+Summary: goit hw 8
+Home-page: https://github.com/vvpwork/goit-python/tree/main/lesson_7
+Author: VVP
+Author-email: vovvva33@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
