@@ -28,9 +28,9 @@ def find_date_gap():
     return [next_week_start, next_week_finish]
 
 
-def isNextWeek(date_user, grap):
+def isNextWeek(date_user, gap):
     try:
-        if grap[0].day <= date_user.day <= grap[1].day:
+        if gap[0].day <= date_user.day <= gap[1].day:
             return f'{date_user.weekday()}'
         else:
             return False
@@ -42,11 +42,11 @@ def congratulate(users):
     result = {}
     for i in week_days:
         result[i] = []
-    grap = find_date_gap()
+    gap = find_date_gap()
     for i in users:
         name = i['name']
         birthsday = i['birthday']
-        isNext = isNextWeek(birthsday, grap)
+        isNext = isNextWeek(birthsday, gap)
         index = int(isNext)
         if isNext:
             result[week_days[index if index < 5 else 0]].append(name)
