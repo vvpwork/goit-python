@@ -1,7 +1,9 @@
 import re
 from collections import defaultdict
+from classes import AddressBook, Record
 
-db = {}
+
+db = AddressBook()
 run_while = True
 phone_regex = r"[0]{1}\d{9}"
 end_message = ['good by', 'exit', 'close']
@@ -32,11 +34,10 @@ def action_user(variant):
         else:
             name = user_arr[1]
             phone = user_arr[2]
-            db[name] = {
-                'phone': phone
-            }
+            db.add_record(Record(name, phone)
+                          ) if variant == 'add' else db[name].add_phone(phone)
 
-            return f'User: {name} and phone: {db[name]["phone"]} was {"added" if variant == "add" else "changed"}'
+            return f'User: {name} and phone: {phone} was {"added" if variant == "add" else "changed"}'
     return user_action
 
 
@@ -48,7 +49,7 @@ def show_phone(user_arr):
         raise KeyError
     else:
         name = user_arr[1]
-        return f'Phone: {db[name]["phone"]}'
+        return f'Phones: {db[name].show_phones()}'
 
 
 def show_all(user_arr):
@@ -61,11 +62,12 @@ def show_all(user_arr):
     if not valid:
         raise IndexError
     else:
-        keys = db.keys()
+        
         result = ''
-        if len(keys):
-            for key in keys:
-                result += (f'User name: {key}, phone: {db[key]["phone"]} \n')
+        if len(db):
+            for val in db:
+                print(val)
+                result += (f'User name: {db[val].name}, phone: {db[val].show_phones()} \n')
             return result
         else:
             return 'I dont have any saved users'
