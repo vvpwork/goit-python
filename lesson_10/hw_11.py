@@ -16,7 +16,7 @@ def error_handler(func):
         except ValueError:
             print('Give me valid name and phone please')
         except KeyError:
-            print("User not found")
+            print("User or phone not found ")
         except IndexError:
             print('Command wrong')
     return wrapper
@@ -25,7 +25,7 @@ def error_handler(func):
 def action_user(variant):
     def user_action(user_arr):
         valid = True
-        if len(user_arr) < 3:
+        if len(user_arr) < 2:
             valid = False
         if not re.search(phone_regex, user_arr[2]):
             valid = False
@@ -33,7 +33,7 @@ def action_user(variant):
             raise ValueError
         else:
             name = user_arr[1]
-            phone = user_arr[2]
+            phone = user_arr[2] if len(user_arr) > 2 else None
             db.add_record(Record(name, phone)
                           ) if variant == 'add' else db[name].add_phone(phone)
 
@@ -52,6 +52,18 @@ def show_phone(user_arr):
         return f'Phones: {db[name].show_phones()}'
 
 
+def delete_phone(user_arr):
+    valid = True
+    if len(user_arr) < 2:
+        valid = False
+    if not valid:
+        raise KeyError
+    else:
+        name = user_arr[1]
+        phone = user_arr[2]
+        return db[name].delete_phone(phone)
+
+
 def show_all(user_arr):
     valid = True
     if len(user_arr) < 2:
@@ -62,12 +74,13 @@ def show_all(user_arr):
     if not valid:
         raise IndexError
     else:
-        
+
         result = ''
         if len(db):
             for val in db:
                 print(val)
-                result += (f'User name: {db[val].name}, phone: {db[val].show_phones()} \n')
+                result += (
+                    f'User name: {db[val].name}, phone: {db[val].show_phones()} \n')
             return result
         else:
             return 'I dont have any saved users'
@@ -88,7 +101,8 @@ command_dict = {
     'add': action_user('add'),
     'change': action_user('change'),
     'phone': show_phone,
-    'show': show_all
+    'show': show_all,
+    'delete': delete_phone
 }
 
 

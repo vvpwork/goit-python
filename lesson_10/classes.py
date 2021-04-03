@@ -1,7 +1,11 @@
 from collections import UserDict
 
 
-class AddressBook(UserDict):
+class Field:
+    pass
+
+
+class AddressBook(UserDict, Field):
     def add_record(self, record):
         self.data[record.name] = record
 
@@ -43,7 +47,3 @@ class Record():
 
     def show_phones(self):
         return ', '.join([i.value for i in self.phones])
-
-
-class Field:
-    pass
